@@ -1,0 +1,56 @@
+@import url(http://fonts.googleapis.com/css?family=Allan:400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic);
+
+body{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+label{
+    font-size: 10px;
+}
+
+input{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+a{
+    font-family: 'Open Sans Condensed', sans-serif !important;
+}
+
+textarea{
+    font-family: 'Open Sans Condensed', sans-serif !important;
+}
+
+.ui-input-text{
+    border-radius: 0 !important;
+}
+
+.error{
+    font-size: 11px !important;
+    color: red;
+}
+
+#panelLogin{
+
+    max-width: 300px !important; 
+    margin: 0 auto !important; 
+    margin-top: 50px !important;
+    margin-bottom: 20px !important;
+}
+
+#titleWecolmeTo{
+    font-family: 'Allan', cursive;
+    font-size: 30px;
+    -webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+   padding: 2px;
+}
+
+.ui-radio{
+    border-radius: 0 !important;
+}
+
+.ui-dialog-contain{
+    background: #FFFFFF;
+}
+
+

@@ -1,0 +1,21 @@
+.item { 
+    width: 270px;
+    margin-bottom:10px;
+}
+
+/* center container with CSS */
+#container{
+  margin: 0 auto;
+}
+
+.ui-body{
+    padding: 7px !important;
+}
+
+.item.w2 { width:  120px; }
+.item.w3 { width:  180px; }
+.item.w4 { width:  240px; }
+
+.item.h2 { height: 100px; }
+.item.h3 { height: 130px; }
+.item.h4 { height: 180px; }

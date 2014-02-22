@@ -11,24 +11,25 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
-        <div data-role="page" id="pageUser">
+        <div data-role="page" id="pageUser" data-theme="a">
             <script src="../scripts/pageUser.js" type="text/javascript"></script>
             <link href="../styles/pageUser.css" rel="stylesheet"/>
-            <div data-role="header" data-position="fixed" class="ui-shadow">
+            <div data-role="header" class="ui-shadow" data-theme="b">
                 <a href="#panelMenu" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-shadow"></a>
                 <h1 id="titleWecolmeTo">WelcomeTo</h1>
-                <a href="newPaper.html" class="ui-btn ui-btn-icon-notext ui-icon-plus ui-shadow">Novo Paper</a>
+                <a href="newPaper.html" data-transition="slidedown" class="ui-btn ui-btn-icon-notext ui-icon-plus ui-shadow">Novo Paper</a>
             </div>
             <div role="main" class="ui-content">
-                <div id="container" style="height: auto;">
+                 <div id="container" style="height: auto;">
                     <div class="item ui-body ui-body-a ui-shadow">
                         <h3>Documento 1</h3>
                         <p>Descrição do documento 1.</p>
-                    </div >
+                    </div>
                     <div class="item ui-body ui-body-a ui-shadow">
                         <div style="width: 100%; height: 200px; max-height: 400px;" 
-                             class="imgLiquidFill imgLiquid">    
-                            <img src="http://viajarpelomundo.com.br/wp-content/uploads/BXK301_fernando-de-noronha-set-2005-4800.jpg"/>
+                             data-original="http://viajarpelomundo.com.br/wp-content/uploads/BXK301_fernando-de-noronha-set-2005-4800.jpg" 
+                             class="imgLiquidFill imgLiquid lazy1">    
+                            <img />
                         </div>
                         <h3>Lorem ipsum fragen dolun</h3>
                         <p>Descrição do documento 2.</p>
@@ -46,15 +47,19 @@ and open the template in the editor.
                         <p>Descrição do documento 1.</p>
                     </div>
                     <div class="item ui-body ui-body-a ui-shadow">
-                        <div style="width: 100%; height: 180px;" class="imgLiquidFill imgLiquid">    
-                            <img src="http://www.lilasturismo.com.br/images/salvador.jpg"/>
+                        <div style="width: 100%; height: 180px;" 
+                             data-original="http://www.lilasturismo.com.br/images/salvador.jpg" 
+                             class="imgLiquidFill imgLiquid lazy1">    
+                            <img />
                         </div>
                         <h3>Lorem ipsum fragen dolun</h3>
                         <p>Descrição do documento 2.</p>
                     </div>
                     <div class="item ui-body ui-body-a ui-shadow">
-                        <div style="width: 100%; height: 300px;" class="imgLiquidFill imgLiquid">    
-                            <img src="http://www.santamariatem.com.br/blog/uploaded_images/6-burj-760462.jpg"/>
+                        <div style="width: 100%; height: 300px;" 
+                             data-original="http://www.santamariatem.com.br/blog/uploaded_images/6-burj-760462.jpg" 
+                             class="imgLiquidFill imgLiquid lazy1">    
+                            <img />
                         </div>
                         <h3>Documento 1</h3>
                         <p>Descrição do documento 1.</p>
@@ -68,31 +73,47 @@ and open the template in the editor.
                         <p>Descrição do documento 1.</p>
                     </div>
                     <div class="item ui-body ui-body-a ui-shadow">
-                        <div style="width: 100%; height: 200px;" class="imgLiquidFill imgLiquid">  
-                            <img src="http://upload.wikimedia.org/wikipedia/en/2/23/System_Preferences_icon.png"/>
+                        <div style="width: 100%; height: 200px;" 
+                             data-original="http://upload.wikimedia.org/wikipedia/en/2/23/System_Preferences_icon.png" 
+                             class="imgLiquidFill imgLiquid lazy11">  
+                            <img />
                         </div>
                         <h3>Lorem ipsum fragen dolun</h3>
                         <p>Descrição do documento 2.</p>
                     </div>
                     <div class="item ui-body ui-body-a ui-shadow">
-                        <div style="width: 100%; height: 200px;" class="imgLiquidFill imgLiquid">  
-                            <img src="http://upload.wikimedia.org/wikipedia/en/2/23/System_Preferences_icon.png"/>
+                        <div style="width: 100%; height: 200px;" 
+                             data-original="http://upload.wikimedia.org/wikipedia/en/2/23/System_Preferences_icon.png" 
+                             class="imgLiquidFill imgLiquid ui-shadow lazy1">    
+                            <img />
                         </div>
-                        <h3>Lorem ipsum fragen dolun</h3>
-                        <p>Descrição do documento 2.</p>
+                        <h3>Documento 1</h3>
+                        <p>Descrição do documento 1.</p>
                     </div>
                     <div class="item ui-body ui-body-a ui-shadow">
-                        <div style="width: 100%; height: 200px;" class="imgLiquidFill imgLiquid">  
-                            <img src="http://upload.wikimedia.org/wikipedia/en/2/23/System_Preferences_icon.png"/>
+                        <div style="width: 100%; height: 200px; " 
+                             data-original="http://upload.wikimedia.org/wikipedia/en/2/23/System_Preferences_icon.png" 
+                             class="imgLiquidFill imgLiquid lazy1"> 
+                            <img />
                         </div>
                         <h3>Lorem ipsum fragen dolun</h3>
                         <p>Descrição do documento 2.</p>
                     </div>
                 </div>
+                <div id="loader" data-role="footer" data-position="fixed" style="display: none; text-align: center; background: transparent; border: none;">
+                    <img src="../images/ajax-loader.gif"/>
+                </div>
+                <div id="backToTop" data-role="footer" data-position="fixed" style="display: none; background: transparent; border: none;">
+                    <a href="#" data-theme="b" onclick="$.mobile.silentScroll(0)" data-role="button" style="float: right;">Back to Top</a>
+                </div>
             </div>
             <div data-role="panel" id="panelMenu">
                 <ul data-role="listview">
-                    <li><a href="#">Cidades</a></li>
+                    <div class="imgLiquidFill imgLiquid ui-shadow imageProfileContainer" 
+                        style="width: 150px; height: 150px; margin: auto;">
+						<img class="imageProfile"/>
+					</div>
+                    <li><a href="profile.html" data-transition="turn">Perfil</a></li>
                     <li><a href="#">Hotéis</a></li>
                     <li><a href="#">Restaurantes</a></li>
                     <li><a href="#">Pousadas</a></li>

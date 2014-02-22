@@ -1,60 +1,68 @@
-(function(global) {
-
+(function (global) {
     Parse.initialize('7NiaLTPJTZAUHtDj6xfJSPPiqe1GxCnkKTs8z5uT', '4URmkfeqSGc8ftF5jII6X7CHziOCm3BMrjmLdbQK');
 
     $(document).off('pageshow', '#pageLogin');
-    $(document).on('pageshow', '#pageLogin', function() {
-
+    $(document).on('pageshow', '#pageLogin', function () {
         var lang = localStorage.getItem('lang');
 
-        if (lang !== null) {
-            var opts = {forceLang: lang, path: "scripts/lang", cache: false};
+        if(lang !== null){
+            var opts = {
+                forceLang: lang,
+                path: "scripts/lang",
+                cache: false
+            };
+            
             $("[data-translate]").jqTranslate('index', opts);
             $('#navbar_lang a').removeClass('ui-btn-active');
             $('#lang_' + lang).addClass('ui-btn-active');
-            
         }
 
-//        var currentUser = Parse.User.current();
-//        if (currentUser) {
-//            $.mobile.changePage('views/userpage.html');
-//        }
+        //        var currentUser = Parse.User.current();
+        //        if (currentUser) {
+        //            $.mobile.changePage('views/userpage.html');
+        //        }
 
-        $('#lang_br').on('click', function() {
-            var opts = {forceLang: 'br', path: "scripts/lang", cache: false};
+        $('#lang_br').on('click', function () {
+            var opts = {
+                forceLang: 'br',
+                path: "scripts/lang",
+                cache: false
+            };
             $("[data-translate]").jqTranslate('index', opts);
             localStorage.setItem('lang', 'br');
         });
-        
-        $('#lang_en').on('click', function() {
-            var opts = {forceLang: 'en', path: "scripts/lang", cache: false};
+
+        $('#lang_en').on('click', function () {
+            var opts = {
+                forceLang: 'en',
+                path: "scripts/lang",
+                cache: false
+            };
             $("[data-translate]").jqTranslate('index', opts);
             localStorage.setItem('lang', 'en');
         });
 
-
-        $('#btn_login').on('click', function() {
-
+        $('#btn_login').on('click', function () {
             $.mobile.loading('show');
             var username = $('#obj_login_username').val();
             var password = $('#obj_login_password').val();
 
             Parse.User.logIn(username, password, {
-                success: function(user) {
-                    $.mobile.changePage('views/userpage.html');
+                success: function (user) {
+                    $.mobile.changePage('views/userpage.html', {
+                        transition: 'turn'
+                    });
                 },
-                error: function(user, error) {
+                error: function (user, error) {
                     $('#popupUserNotFound').popup('open');
                     $.mobile.loading('hide');
                 }
             });
-
         });
     });
 
     $(document).off('pageshow', '#pageSignup');
-    $(document).on('pageshow', '#pageSignup', function() {
-
+    $(document).on('pageshow', '#pageSignup', function () {
         $('#btn_save_user').on('click', signup);
 
         //<editor-fold defaultstate="collapsed" desc="Configure form validate signup">
@@ -81,13 +89,10 @@
             }
         });
         //</editor-fold>
-
     });
 
     function signup() {
-
         if ($('#formSignup').valid()) {
-
             $.mobile.loading('show');
 
             var user = new Parse.User();
@@ -100,16 +105,14 @@
             user.set('lastname', $('#obj_signup_lastname').val());
 
             user.signUp(null, {
-                success: function(user) {
+                success: function (user) {
                     $.mobile.changePage('views/userpage.html');
                 },
-                error: function(user, error) {
+                error: function (user, error) {
                     $.mobile.loading('hide');
                     alert("Error: " + error.code + " " + error.message);
                 }
             });
         }
-    }
-    ;
-
+    };
 })(window);

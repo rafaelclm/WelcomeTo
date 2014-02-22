@@ -1,0 +1,23 @@
+.profileItens
+{
+    margin-top: 15px !important;
+    font-size: 18px !important;
+    margin-bottom: 0px !important;
+}
+
+.photoInLandscape
+{  
+    width: 250px; 
+    height: 250px; 
+    margin: auto;
+}
+
+#containerImage
+{
+    border: 1px solid #CCCCCC;
+}
+
+.ui-li-aside{
+    font-weight: 700 !important;
+}
+
