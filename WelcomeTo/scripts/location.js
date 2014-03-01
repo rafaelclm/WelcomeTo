@@ -1,119 +1,99 @@
 (function (global) {
-    var map,
-        geocoder,
-        lastMarker,
-        isLoading = false,
-        $address;
-
-    function init() {
-        $address = $("#map-address");
-
-        if (window.location.hash === "#page-location") {
-            initLocation();
-        } else {
-            $("#page-location").on("pageinit", initLocation);
-        }
-
-        //show loading mask in case the location not found yet 
-        //and user returns to the page
-        $("#page-location").on("pageshow", showPage);
-
-        //hide loading mask when user leaves the page and it is only relevant to location
-        $("#page-location").on("pagehide", hidePage);
-
-        $("#map-navigate-home").on("click", navigateHome);
-        $("#map-search").on("click", searchAddress);
-    }
-
-    $(document).on("deviceready", init);
-
-    function initLocation() {
-        var mapOptions = {
-            zoom: 15,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            zoomControl: true,
-            zoomControlOptions: {
-                position: google.maps.ControlPosition.LEFT_BOTTOM
-            },
-
-            mapTypeControl: false,
-            streetViewControl: false
+   
+    var geocoder;
+    var map;
+    var marker;
+    var latitude;
+    var longitude;
+    var location;
+    
+    $(document).off('pageshow', '#pageLocation');
+    
+    $(document).on('pageshow', '#pageLocation', function(){
+       
+        navigator.geolocation.getCurrentPosition(initialize);
+        
+        $("#mapAddress").keyup(function() {
+            if($(this).val() !== ""){
+                loadToMap($(this).val());
+            }
+        });
+        
+        $('#btnConfirm').on('click', function(){
+            sessionStorage.setItem('location', JSON.stringify(location));
+        });
+       
+        
+    });
+    
+    function initialize(position) {
+        
+        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var options = {
+        zoom: 5,
+        center: latlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-
-        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    
+        map = new google.maps.Map(document.getElementById("map-canvas"), options);
         geocoder = new google.maps.Geocoder();
-        navigateHome();
-    }
-
-    function navigateHome() {
-        var position;
-
-        isLoading = true;
-        showPage();
-
-        navigator.geolocation.getCurrentPosition(
-            function (position) {
-                position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                map.panTo(position);
-                putMarker(position);
-
-                isLoading = false;
-                hidePage();
-            }, function (error) {
-                //default map coordinates
-                position = new google.maps.LatLng(43.459336, -80.462494);
-                map.panTo(position);
-
-                isLoading = false;
-                hidePage();
-
-                navigator.notification.alert("Unable to determine current location. Cannot connect to GPS satellite.",
-                    function () { }, "Location failed", 'OK');
-            }, {
-                timeout: 30000,
-                enableHighAccuracy: true
-            });
-    }
-
-    function searchAddress() {
-        var address = $address.val();
-
-        geocoder.geocode(
-            {
-                'address': address
-            }, function (results, status) {
-                if (status !== google.maps.GeocoderStatus.OK) {
-                    navigator.notification.alert("Unable to find address.",
-                        function () { }, "Search failed", 'OK');
-
-                    return;
-                }
-
-                map.panTo(results[0].geometry.location);
-                putMarker(results[0].geometry.location);
-            });
-    }
-
-    function showPage() {
-        if (isLoading) {
-            $.mobile.loading("show");
-        }
-
-        google.maps.event.trigger(map, "resize");
-    }
-
-    function hidePage() {
-        $.mobile.loading("hide");
-    }
-
-    function putMarker(position) {
-        if (lastMarker !== null && lastMarker !== undefined) {
-            lastMarker.setMap(null);
-        }
-
-        lastMarker = new google.maps.Marker({
+        marker = new google.maps.Marker({
             map: map,
-            position: position
+            draggable: true,
+            icon: '../images/marker.png'
+        });
+        
+        loadToMap(undefined, latlng);
+        
+         google.maps.event.addListener(marker, 'drag', function () {
+            geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        location = results[0];
+                        $('#mapAddress').val(location.formatted_address);
+                    }
+                }
+            });
         });
     }
+    
+    function loadToMap(address, latlng) {
+
+            if(address !== undefined){
+                geocoder.geocode({ 'address': address}, function (results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            
+                            location = results[0];
+                            latitude = location.geometry.location.lat();
+                            longitude = location.geometry.location.lng();
+                            
+                            marker.setPosition(new google.maps.LatLng(latitude, longitude));
+                            map.setCenter(new google.maps.LatLng(latitude, longitude));
+                            map.setZoom(16);
+                            
+                        }
+                    }
+                });
+            }
+        else if(latlng !== undefined){
+            geocoder.geocode({ 'location': latlng}, function (results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        if (results[0]) {
+                            
+                            location = results[0];
+                            latitude = location.geometry.location.lat();
+                            longitude = location.geometry.location.lng();
+                            
+                            marker.setPosition(new google.maps.LatLng(latitude, longitude));
+                            map.setCenter(new google.maps.LatLng(latitude, longitude));
+                            map.setZoom(16);
+                            
+                        }
+                    }
+                });
+        }
+        }
+
+
 })(window);

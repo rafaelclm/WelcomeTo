@@ -50,7 +50,7 @@
             Parse.User.logIn(username, password, {
                 success: function (user) {
                     $.mobile.changePage('views/userpage.html', {
-                        transition: 'turn'
+                        transition: 'flow'
                     });
                 },
                 error: function (user, error) {

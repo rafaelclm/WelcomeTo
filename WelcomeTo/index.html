@@ -23,8 +23,10 @@ and open the template in the editor.
         <script src="scripts/plugins/jquery.validate.min.js" type="text/javascript"></script>
         <script src="scripts/plugins/masonry.pkgd.min.js" type="text/javascript"></script>
         <script src="scripts/plugins/parse-1.2.16.min.js" type="text/javascript"></script>
+        <script src="scripts/plugins/jquery.sticky.js" type="text/javascript"></script>
         <script src="scripts/index.js" type="text/javascript"></script>
         <script src="scripts/plugins/jqueryTranslator.js" type="text/javascript"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD-GtRI3yYF0WIV14Z1ax4AhYgVTy97Ah4&sensor=false"></script>
         <script src="cordova.js"></script>
         
         <script type="text/javascript">
@@ -37,8 +39,8 @@ and open the template in the editor.
     </head>
     <body id="bodyIndex">
 
-        <div data-role="page" id="pageLogin" data-theme="b">
-            <div data-role="header" data-position="fixed" class="ui-shadow">
+        <div data-role="page" id="pageLogin" data-theme="a">
+            <div data-role="header" data-position="fixed" class="ui-shadow" data-theme="b">
                 <h1 id="titleWecolmeTo">WelcomeTo</h1>
             </div>
             <div role="main" class="ui-content" style="padding-top: 35px;">
@@ -61,7 +63,7 @@ and open the template in the editor.
                     <a href="#" class="ui-btn ui-btn-b ui-btn-icon-left ui-icon-user ui-shadow" id="btn_login" data-translate="LOGIN"></a>
                 </div>
             </div>
-            <div data-role="footer" data-position="fixed" class="ui-shadow">
+            <div data-role="footer" data-position="fixed" class="ui-shadow" data-theme="b">
                 <a href="#pageSignup" data-translate="CREATE_AN_ACCOUNT"></a>
             </div>
             <div data-role="popup" id="popupUserNotFound" data-arrow="true">
@@ -70,8 +72,8 @@ and open the template in the editor.
             </div>
         </div>
 
-        <div data-role="page" id="pageSignup" data-theme="b">
-            <div data-role="header" data-position="fixed" class="ui-shadow">
+        <div data-role="page" id="pageSignup" data-theme="a">
+            <div data-role="header" data-position="fixed" class="ui-shadow" data-theme="b">
                 <a href="#" class="ui-btn ui-btn-icon-left ui-icon-back ui-shadow" data-rel="back">Voltar</a>
                 <h1>Registrar</h1>
             </div>
@@ -82,7 +84,7 @@ and open the template in the editor.
                     <input data-theme="a" type="text" id="obj_signup_username" name="username" class="ui-shadow" placeholder="Usuário"/>
                     <input data-theme="a" type="email" id="obj_signup_email" name="email" class="ui-shadow" placeholder="Email"/>
                     <input data-theme="a" type="password" id="obj_signup_password" name="password" class="ui-shadow" placeholder="Senha"/>
-                    <a href="#" class="ui-btn ui-btn-icon-left ui-icon-user ui-shadow" id="btn_save_user">Registrar</a>
+                    <a href="#" class="ui-btn ui-btn-b ui-btn-icon-left ui-icon-user ui-shadow" id="btn_save_user">Registrar</a>
                 </form>
             </div>
         </div>

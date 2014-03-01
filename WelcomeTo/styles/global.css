@@ -25,6 +25,11 @@ textarea{
     border-radius: 0 !important;
 }
 
+label{
+
+    border-radius: 0 !important;
+}
+
 .error{
     font-size: 11px !important;
     color: red;
