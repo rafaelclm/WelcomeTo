@@ -151,6 +151,7 @@
             paper.set('content', newPaper.content);
             paper.set('image', parseFile);
             paper.set('category', newPaper.category);
+		  
             var point = new Parse.GeoPoint({
                 latitude: newPaper.geopoint.geometry.location.d,
                 longitude: newPaper.geopoint.geometry.location.e
