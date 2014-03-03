@@ -151,6 +151,7 @@
 			paper.set('content', (newPaper.content === null ? '' : newPaper.content));
 			paper.set('image', parseFile);
 			paper.set('category', (newPaper.category === null ? '' : newPaper.category));
+			paper.set('score', 0);
 		  
 			var point = new Parse.GeoPoint(
 				{
@@ -231,7 +232,8 @@
 		$.mobile.loading('show');
 		
 		setTimeout(function() {
-			var ratio = 0.35;
+			
+			var ratio = 0.75;
 				
 			var can = document.createElement('canvas');
 			var ctx = can.getContext('2d');

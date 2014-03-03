@@ -58,4 +58,87 @@ label{
     background: #FFFFFF;
 }
 
-
+.ui-popup-arrow-container {
+    width: 38px;
+    height: 38px;
+}
+ 
+.ui-popup-arrow-container.ui-popup-arrow-l {
+    left: -19px;
+    clip: rect(-1000px,19px,2000px,-1000px);
+}
+ 
+.ui-popup-arrow-container.ui-popup-arrow-t {
+    top: -19px;
+    clip: rect(-1000px,2000px,19px,-1000px);
+}
+ 
+.ui-popup-arrow-container.ui-popup-arrow-r {
+    right: -19px;
+    clip: rect(-1000px,2000px,2000px,19px);
+}
+ 
+.ui-popup-arrow-container.ui-popup-arrow-b {
+    bottom: -19px;
+    clip: rect(19px,2000px,1000px,-1000px);
+}
+ 
+.ui-popup-arrow-container .ui-popup-arrow {
+    width: 53.74011537017761px;
+    height: 53.74011537017761px;
+    border-width: 1px;
+    border-style: solid;
+}
+ 
+.ui-popup-arrow-container.ui-popup-arrow-t .ui-popup-arrow {
+    left: -7.870057685088808px;
+    top: 11.129942314911192px;
+}
+ 
+.ui-popup-arrow-container.ui-popup-arrow-b .ui-popup-arrow {
+    left: -7.870057685088808px;
+    top: -26.870057685088806px;
+}
+ 
+.ui-popup-arrow-container.ui-popup-arrow-l .ui-popup-arrow {
+    left: 11.129942314911192px;
+    top: -7.870057685088808px;
+}
+ 
+.ui-popup-arrow-container.ui-popup-arrow-r .ui-popup-arrow {
+    left: -26.870057685088806px;
+    top: -7.870057685088808px;
+}
+ 
+.ui-popup-arrow-container.ui-popup-arrow-t.ie .ui-popup-arrow {
+    margin-left: -11.129942314911192px;
+    margin-top: -13.435028842544403px;
+}
+.ui-popup-arrow-container.ui-popup-arrow-b.ie .ui-popup-arrow {
+    margin-left: -11.129942314911192px;
+    margin-top: -7.870057685088808px;
+}
+ 
+.ui-popup-arrow-container.ui-popup-arrow-l.ie .ui-popup-arrow {
+    margin-left: -13.435028842544403px;
+    margin-top: -11.129942314911192px;
+}
+.ui-popup-arrow-container.ui-popup-arrow-r.ie .ui-popup-arrow {
+    margin-left: -7.870057685088808px;
+    margin-top: -11.129942314911192px;
+}
+ 
+.ui-popup-arrow-background {
+    width: 38px;
+    height: 38px;
+}
+ 
+.ui-popup-arrow-container.ui-popup-arrow-t .ui-popup-arrow-background,
+.ui-popup-arrow-container.ui-popup-arrow-b .ui-popup-arrow-background {
+    background-position: 0 19px;
+}
+ 
+.ui-popup-arrow-container.ui-popup-arrow-l .ui-popup-arrow-background,
+.ui-popup-arrow-container.ui-popup-arrow-r .ui-popup-arrow-background {
+    background-position: 19px 0;
+}
