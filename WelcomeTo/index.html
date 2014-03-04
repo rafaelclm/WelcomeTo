@@ -5,88 +5,99 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
 
-        <link href="styles/themes/jquery.mobile.custom.theme.min.css" rel="stylesheet"/>
-        <link href="styles/themes/jquery.mobile.icons.min.css" rel="stylesheet"/>
-        <link href="styles/themes/jquery.mobile.structure-1.4.0.min.css" rel="stylesheet"/>
-        <link href="styles/themes/popup.css" rel="stylesheet"/>
-        <link href="styles/global.css" rel="stylesheet"/>
+		<link href="styles/themes/jquery.mobile.custom.theme.min.css" rel="stylesheet"/>
+		<link href="styles/themes/jquery.mobile.icons.min.css" rel="stylesheet"/>
+		<link href="styles/themes/jquery.mobile.structure-1.4.0.min.css" rel="stylesheet"/>
+		<link href="styles/themes/popup.css" rel="stylesheet"/>
+		<link href="styles/global.css" rel="stylesheet"/>
 
-        <script src="scripts/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
-        <script src="scripts/plugins/jquery.mobile-1.4.0.min.js" type="text/javascript"></script>
-        <script src="scripts/plugins/imgLiquid-min.js" type="text/javascript"></script>
-        <script src="scripts/plugins/jquery.lazyload.min.js" type="text/javascript"></script>
-        <script src="scripts/plugins/jquery.validate.min.js" type="text/javascript"></script>
-        <script src="scripts/plugins/masonry.pkgd.min.js" type="text/javascript"></script>
-        <script src="scripts/plugins/parse-1.2.16.min.js" type="text/javascript"></script>
-        <script src="scripts/plugins/jquery.raty.min.js" type="text/javascript"></script>
-        <script src="scripts/index.js" type="text/javascript"></script>
-        <script src="scripts/plugins/jqueryTranslator.js" type="text/javascript"></script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD-GtRI3yYF0WIV14Z1ax4AhYgVTy97Ah4&sensor=false"></script>
-        <script src="cordova.js"></script>
-        
-        <script type="text/javascript">
-            $(function() {
-                var opts = {forceLang: "br", path: "scripts/lang", cache: false};
-                $("[data-translate]").jqTranslate('index', opts);
-            });
-        </script>
+		<script src="scripts/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+		<script src="scripts/plugins/jquery.mobile-1.4.0.min.js" type="text/javascript"></script>
+		<script src="scripts/plugins/imgLiquid-min.js" type="text/javascript"></script>
+		<script src="scripts/plugins/jquery.lazyload.min.js" type="text/javascript"></script>
+		<script src="scripts/plugins/jquery.validate.min.js" type="text/javascript"></script>
+		<script src="scripts/plugins/masonry.pkgd.min.js" type="text/javascript"></script>
+		<script src="scripts/plugins/parse-1.2.16.min.js" type="text/javascript"></script>
+		<script src="scripts/plugins/jquery.raty.min.js" type="text/javascript"></script>
+		<script src="scripts/plugins/jquery.sticky.js" type="text/javascript"></script>
+		<script src="scripts/index.js" type="text/javascript"></script>
+		<script src="scripts/plugins/jqueryTranslator.js" type="text/javascript"></script>
+		<script src="scripts/translate.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$.getScript('https://www.google.com/jsapi', function() {
+				google.load('maps', '3', 
+					{
+						other_params: 'sensor=false', callback: function() {
+							// Callback code here
+						}
+					});
+			});
+		</script>
+		<script src="cordova.js"></script>
 
-    </head>
-    <body id="bodyIndex">
+		<script type="text/javascript">
+			$(function() {
+				var opts = {forceLang: "br", path: "scripts/lang", cache: false};
+				$("[data-translate]").jqTranslate('index', opts);
+			});
+		</script>
 
-        <div data-role="page" id="pageLogin" data-theme="a">
-            <div data-role="header" data-position="fixed" class="ui-shadow" data-theme="b">
-                <h1 id="titleWecolmeTo">WelcomeTo</h1>
-            </div>
-            <div role="main" class="ui-content" style="padding-top: 35px;">
-                <link href="styles/index.css" rel="stylesheet"/> 
-                <div id="panelLogin">
-                    <form>
-                        <div data-role="navbar" id="navbar_lang">
-                            <ul>
-                                <li>
-                                    <a href="#" id="lang_br" data-translate="PT_BR_LANG" class="ui-btn-active ui-shadow">One</a>
-                                </li>
-                                <li>
-                                    <a href="#" id="lang_en" data-translate="EN_LANG" class="ui-shadow">Two</a>
-                                </li>
-                            </ul>
-                        </div><!-- /navbar -->
-                    </form>
-                    <input id="obj_login_username" data-theme="a" data-translate="OBJ_LOGIN_USERNAME" type="text" class="ui-shadow" placeholder="" value="rafael.clm"/>
-                    <input id="obj_login_password" data-theme="a" type="password" class="ui-shadow" placeholder="Senha" value="console"/>
-                    <a href="#" class="ui-btn ui-btn-b ui-btn-icon-left ui-icon-user ui-shadow" id="btn_login" data-translate="LOGIN"></a>
-                </div>
-            </div>
-            <div data-role="footer" data-position="fixed" class="ui-shadow" data-theme="b">
-                <a href="#pageSignup" data-translate="CREATE_AN_ACCOUNT"></a>
-            </div>
-            <div data-role="popup" id="popupUserNotFound" data-arrow="true">
-                <h4 style="text-align: center;">Usuário ou senha não correspondem.</h4>
-                <p style="text-align: center;">Por favor, confira suas informações de login e tente novamente.</p>
-            </div>
-        </div>
+	</head>
+	<body id="bodyIndex">
 
-        <div data-role="page" id="pageSignup" data-theme="a">
-            <div data-role="header" data-position="fixed" class="ui-shadow" data-theme="b">
-                <a href="#" class="ui-btn ui-btn-icon-left ui-icon-back ui-shadow" data-rel="back">Voltar</a>
-                <h1>Registrar</h1>
-            </div>
-            <div role="main" class="ui-content">
-                <form id="formSignup">
-                    <input data-theme="a" type="text" id="obj_signup_firstname" name="firstname" class="ui-shadow" placeholder="Nome"/>
-                    <input data-theme="a" type="text" id="obj_signup_lastname" name="lastname" class="ui-shadow" placeholder="Sobrenome"/>
-                    <input data-theme="a" type="text" id="obj_signup_username" name="username" class="ui-shadow" placeholder="Usuário"/>
-                    <input data-theme="a" type="email" id="obj_signup_email" name="email" class="ui-shadow" placeholder="Email"/>
-                    <input data-theme="a" type="password" id="obj_signup_password" name="password" class="ui-shadow" placeholder="Senha"/>
-                    <a href="#" class="ui-btn ui-btn-b ui-btn-icon-left ui-icon-user ui-shadow" id="btn_save_user">Registrar</a>
-                </form>
-            </div>
-        </div>
-    </body>
+		<div data-role="page" id="pageLogin" data-theme="a">
+			<div data-role="header" data-position="fixed" class="ui-shadow" data-theme="a">
+				<h1 id="titleWecolmeTo">WelcomeTo</h1>
+			</div>
+			<div role="main" class="ui-content" style="padding-top: 35px;">
+				<link href="styles/index.css" rel="stylesheet"/>
+				<div id="panelLogin">
+					<form>
+						<div data-role="navbar" id="navbar_lang">
+							<ul>
+								<li>
+									<a href="#" id="lang_br" data-translate="PT_BR_LANG" class="ui-btn-active ui-shadow">One</a>
+								</li>
+								<li>
+									<a href="#" id="lang_en" data-translate="EN_LANG" class="ui-shadow">Two</a>
+								</li>
+							</ul>
+						</div><!-- /navbar -->
+					</form>
+					<input id="obj_login_username" data-theme="a" data-translate="OBJ_LOGIN_USERNAME" type="text" class="ui-shadow" placeholder="" value="rafael.clm"/>
+					<input id="obj_login_password" data-theme="a" type="password" class="ui-shadow" placeholder="Senha" value="console"/>
+					<a href="#" class="ui-btn ui-btn-a ui-btn-icon-left ui-icon-user ui-shadow" id="btn_login" data-translate="LOGIN"></a>
+				</div>
+			</div>
+			<div data-role="footer" data-position="fixed" class="ui-shadow" data-theme="a">
+				<a href="#pageSignup" class="ui-btn ui-btn-a" style="margin-left: 10px;" data-transition="flow" data-translate="CREATE_AN_ACCOUNT"></a>
+			</div>
+			<div data-role="popup" id="popupUserNotFound" data-arrow="true">
+				<h4 style="text-align: center;">Usuário ou senha não correspondem.</h4>
+				<p style="text-align: center;">Por favor, confira suas informações de login e tente novamente.</p>
+			</div>
+		</div>
+
+		<div data-role="page" id="pageSignup" data-theme="a">
+			<div data-role="header" data-position="fixed" class="ui-shadow" data-theme="a">
+				<a href="#" class="ui-btn ui-btn-icon-left ui-icon-back ui-shadow" data-rel="back">Voltar</a>
+				<h1>Registrar</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<form id="formSignup">
+					<input data-theme="a" type="text" id="obj_signup_firstname" name="firstname" class="ui-shadow" placeholder="Nome"/>
+					<input data-theme="a" type="text" id="obj_signup_lastname" name="lastname" class="ui-shadow" placeholder="Sobrenome"/>
+					<input data-theme="a" type="text" id="obj_signup_username" name="username" class="ui-shadow" placeholder="Usuário"/>
+					<input data-theme="a" type="email" id="obj_signup_email" name="email" class="ui-shadow" placeholder="Email"/>
+					<input data-theme="a" type="password" id="obj_signup_password" name="password" class="ui-shadow" placeholder="Senha"/>
+					<a href="#" class="ui-btn ui-btn-a ui-btn-icon-left ui-icon-user ui-shadow" id="btn_save_user">Registrar</a>
+				</form>
+			</div>
+		</div>
+	</body>
 </html>

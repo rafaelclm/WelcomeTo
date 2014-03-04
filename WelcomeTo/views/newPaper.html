@@ -16,7 +16,7 @@ and open the template in the editor.
 		<div data-role="page" id="pageNewPaper" data-dialog="true" data-theme="a" data-close-btn="right">
 			<script src="../scripts/newPaper.js" type="text/javascript"></script>
 			<link href="../styles/newPaper.css" rel="stylesheet" />
-			<div data-role="header" data-theme="b">
+			<div data-role="header" data-theme="a">
 				<h1>Novo Paper</h1>
 				<a href="#loadPhoto" data-rel="popup" data-transition="flow" class="ui-btn ui-btn-icon-notext ui-icon-camera">Imagem</a>
 			</div>
@@ -25,10 +25,10 @@ and open the template in the editor.
 			</div>
 			<textarea id="contentPaper" placeholder="Conteúdo do paper aqui"></textarea>
 			<div class="ui-body" id="local"></div>
-			<div class="ui-body ui-body-b">
+			<div class="ui-body ui-body-a">
 				<div class="ui-grid-a">
 					<div class="ui-block-a">
-						<label data-theme="b" class="ui-shadow">
+						<label data-theme="a" class="ui-shadow">
 							<input type="checkbox" name="checkin" id="checkin" data-mini="true">Check in
 						</label>
 					</div>
@@ -45,26 +45,26 @@ and open the template in the editor.
 					<option value="LUGAR" >Lugar</option>
 				</select>
 			</div>
-			<div data-role="footer" data-theme="b">
+			<div data-role="footer" data-theme="a">
 				<a id="btnSavePaper" class="ui-btn ui-btn-icon-left ui-icon-arrow-u ui-shadow">Salvar</a>
 			</div>
-			<div data-role="popup" id="loadPhoto" data-overlay-theme="b" data-position="window" data-theme="b" data-dismissible="false" style="width:270px;">
+			<div data-role="popup" id="loadPhoto" data-overlay-theme="a" data-position="window" data-theme="a" data-dismissible="false" style="width:270px;">
 				<div role="main" class="ui-content">
-					<a href="#" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-mini" id="btnTakePic">Camera</a>
-					<a href="#" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-mini" id="btnChooseImage">Galeria</a>
-					<a href="#" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-mini" id="btnCancel" data-rel="back">Cancelar</a>
+					<a href="#" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-mini" id="btnTakePic">Camera</a>
+					<a href="#" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-mini" id="btnChooseImage">Galeria</a>
+					<a href="#" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-mini" id="btnCancel" data-rel="back">Cancelar</a>
 					<p style="text-align: center">Imagens no formato paisagem ficam melhor posicionadas no paper</p>
 				</div>
 			</div>
-			<div data-role="popup" id="popupOk" data-overlay-theme="b" data-theme="b" data-dismissible="false" class="ui-corner-all">
+			<div data-role="popup" id="popupOk" data-overlay-theme="a" data-theme="a" data-dismissible="false" class="ui-corner-all">
 				<div style="padding:10px 20px; text-align: center;">
 					<h3>Seu paper foi adicionado com sucesso!</h3>
 				</div>
 			</div>
-			<div data-role="popup" id="popupSaving" data-overlay-theme="b" data-theme="b" data-dismissible="false" class="ui-corner-all">
+			<div data-role="popup" id="popupSaving" style="width: 50%; border: none; margin : 0px auto;" 
+				data-overlay-theme="a" data-theme="a" data-dismissible="false" class="ui-corner-all">
 				<div style="padding:10px 20px; text-align: center;">
-					<img src="../images/ajax-loader.gif"/>
-					<h3>Salvando o paper!</h3>
+					<img style="width:100%" src="../images/loading.gif"/>
 				</div>
 			</div>
 		</div>

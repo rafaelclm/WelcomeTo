@@ -19,7 +19,7 @@
 			{
 				success: function (profile) {
 					if (profile[0].get('photo') === undefined) {
-						$('.imageProfile').attr('src', 'images/user_128.png');
+						$('.imageProfile').attr('src', 'images/user.png');
 					}
 					else {
 						$('.imageProfile').attr('src', profile[0].get('photo').url() + '?' + new Date().getTime());
@@ -29,6 +29,8 @@
 				}
 			});
 		
+		$('.displayName').html(currentUser.get('firstname') + ' ' + currentUser.get('lastname'));
+		
 		$('#score').raty(
 			{
 				path     : '../scripts/plugins/img',
@@ -37,9 +39,16 @@
 				size     : 24,
 				click:
 				function(score, evt) {
-					alert('ID: ' + $(this).attr('id') + "\nscore: " + score + "\nevent: " + evt);
+					global.score = score;
 				}
 			});
+		
+		$('#sticker').sticky({topSpacing:0});
+		
+		$('#btnSaveTip').on('click', function() {
+		});
+		
+		
 	});
 
 	function loadSwipeEvent() {
@@ -69,13 +78,6 @@
    
 	function loadMoreItems() {
 		$(window).on('scroll', function (e) {
-			if ($(window).scrollTop() > 200) {
-				$('#backToTop').show('slow');
-			}
-			else {
-				$('#backToTop').hide('slow');
-			}
-
 			if (($(window).scrollTop() + $(window).height()) >= ($(document).height() - 200)) {
 				lazypage += 1;
 				searchItems()
@@ -105,27 +107,48 @@
 				for (var i = 0; i < papers.length; i++) {
 					var paper = papers[i];
 					var $item = $('<div></div>');
-					$item.attr('class', 'item ui-shadow');
+					$item.attr('class', 'item ui-shadow ui-corner-all');
 					$item.attr('id', paper.id);	
 					$item.attr('style', 'background: whitesmoke');
 					
 					var $body = $('<div></div>');
-					$body.attr('class', 'ui-body ui-body-a');
+					$body.attr('class', 'ui-body ui-body-a ui-corner-all');
 					$body.attr('style', 'border: none');
                    
 					var $imageContainer = $('<div></div>');
 					var $img = $('<img class="imgLiquidFill imgLiquid"/>');
-					$img.attr('src', '../images/banner_loading.gif');
 					$img.attr('width', '100%');
 					$imageContainer.append($img);
 					$imageContainer.attr('data-original', paper.get('image').url());
-					$imageContainer.attr('class', 'imgLiquidFill imgLiquid ui-shadow lazy' + lazypage);
+					$imageContainer.attr('class', 'ui-corner-all imgLiquidFill imgLiquid lazy' + lazypage);
 					$imageContainer.attr('style', 'width: 100%; height: 250px;');
 					$body.append($imageContainer);
 					
+					var $wrapResults = $('<div class="ui-grid-b"></div>');
+					
+					var $commentsCount = $('<div class="ui-block-a" style="width: 40%"></div>');
+					$commentsCount.attr('id', 'commentsCount' + paper.id);
+					$commentsCount.text(paper.get('commentsCount') + ' comentários');
+					$wrapResults.append($commentsCount);
+					
+					var $tipsCount = $('<div class="ui-block-b" style="width: 30%"></div>');
+					$tipsCount.attr('id', 'tipsCount' + paper.id);
+					$tipsCount.text(paper.get('tipsCount') + ' dicas');
+					$wrapResults.append($tipsCount);
+					
+					var $ratings = $('<div class="ui-block-c" style="width: 30%"></div>');
+					$ratings.attr('id', 'ratings' + paper.id);
+					$ratings.text(paper.get('ratings') + ' votos');
+					$ratings.append($ratings);
+					
+					$wrapResults.append($ratings);
+					
+					$body.append($wrapResults);
+					
 					var $score = $('<div style="height: 30px; padding-top: 10px;"></div>');
-					$score.attr('data-score', paper.get('score'));
+					$score.attr('data-score', (paper.get('score') / paper.get('ratings')));
 					$score.attr('class', 'score');
+					$score.attr('id', 'score' + paper.id);
 					$body.append($score);
                     
 					var $local = $('<div></div>');
@@ -167,25 +190,27 @@
 					var $buttons = $('<div class="ui-grid-b"></div>');
 					$buttons.attr('paper', paper.id);
 					var $comment = $('<a href="#popupComment">Comentar</a>');
-					$comment.attr('name', 'comment');
+					$comment.attr('name', 'paperOp');
 					$comment.attr('style', 'margin: 0; border: none;');
 					$comment.attr('class', 'ui-btn ui-btn-icon-left ui-icon-comment ui-mini');
+					$comment.attr('data-position-to', 'window');
 					$comment.attr('data-rel', 'popup');
 					
 					var $wrapComment = $('<div class="ui-block-a"></div>');
 					$buttons.append($wrapComment.append($comment));
 					
 					var $tag = $('<a href="#popupTip">Dica</a>');
-					$tag.attr('name', 'tag');
+					$tag.attr('name', 'paperOp');
 					$tag.attr('style', 'margin: 0; border: none;');
 					$tag.attr('class', 'ui-btn ui-btn-icon-left ui-icon-info ui-mini');
+					$tag.attr('data-position-to', 'window');
 					$tag.attr('data-rel', 'popup');
 					
 					var $wrapTag = $('<div class="ui-block-b"></div>');
 					$buttons.append($wrapTag.append($tag));
 					
 					var $raty = $('<a href="#popupRaty">Avaliar</a>');
-					$raty.attr('name', 'raty');
+					$raty.attr('name', 'paperOp');
 					$raty.attr('style', 'margin: 0; border: none;');
 					$raty.attr('class', 'ui-btn ui-btn-icon-left ui-icon-star ui-mini');
 					$raty.attr('data-rel', 'popup');
@@ -226,6 +251,11 @@
 											size     : 24
 										});
 								}
+								
+								$('a[name="paperOp"]').on('click', function() {
+									var parent = $(this).parent().parent();
+									global.paperId = parent.attr('paper');
+								});
 							}
 						});
 				}, 3000);
@@ -247,7 +277,7 @@
 					{
 						success: function (profile) {
 							if (profile[0].get('photo') === undefined) {
-								$('#imageUser_' + relations[0].parent.id).attr('src', 'images/user_128.png');
+								$('#imageUser_' + relations[0].parent.id).attr('src', '../images/user.png');
 							}
 							else {
 								$('#imageUser_' + relations[0].parent.id).attr('src', profile[0].get('photo').url());

@@ -1,64 +1,68 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-        <div data-role="page"  id="pageProfile" data-theme="a">
-            <script src="../scripts/profile.js" type="text/javascript"></script>
-            <link href="../styles/profile.css" rel="stylesheet"/>
-            <div role="main" class="ui-content" id="page-profile-content">
-                <div>
-                    <div id="containerImage" class="imgLiquidFill imgLiquid ui-shadow photoInLandscape">
-                        <a href="#loadPhoto" data-rel="popup" data-position-to="origin" data-transition="none" id="btnAlterImage">
-                            <img class="imageProfile" src="../images/banner_loading.gif"/>
-                        </a>
-                    </div>
-                    <ul data-role="listview" class="ui-shadow fontOpenSans" id="listViewProfile">
-                        <li>
-                            <a href="#" data-rel="popup" data-position-to="window" data-transition="pop" >
-                                <h3 class="displayName"></h3>
-                            </a>
-                        </li>
-                        <li>
-                            <p class="ui-li-aside" data-translate="NASCEU_EM"></p>
-                            <p class="profileItens" id="birthplace" style="text-indent: 20px;"></p>
-                        </li>
-                        <li>
-                            <p class="ui-li-aside" data-translate="MORA_EM"></p>
-                            <p class="profileItens" id="livesIn" style="text-indent: 20px;"></p>
-                        </li>
-                        <li>
-                            <p class="ui-li-aside" data-translate="TRABALHA_EM"></p>
-                            <p class="profileItens" id="work" style="text-indent: 20px;"></p>
-                        </li>
-                        <li>
-                            <p class="ui-li-aside" data-translate="ESTUDA_EM" ></p>
-                            <p class="profileItens" id="studiesIn" style="text-indent: 20px;"></p>
-                        </li>
-                        <li>
-                            <p class="ui-li-aside" data-translate="IDIOMAS"></p>
-                            <div class="profileItens" id="languages"></div>
-                        </li>
-                        <li>
-                            <p class="ui-li-aside" data-translate="FORMADO_EM"></p>
-                            <div class="profileItens" id="graduations"></div>
-                        </li>
-                        <li>
-                            <p class="ui-li-aside" data-translate="VIAGENS" >Viajou para</p>
-                            <div class="profileItens" id="traveling"></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div data-role="popup" id="loadPhoto" data-overlay-theme="b" data-position="window" data-theme="b" data-dismissible="false" style="width:270px;">
-                <div role="main" class="ui-content">
-                    <button id="btnTakePic">Camera</button>
-                    <button id="btnChooseImage">Galeria</button>
-                    <a href="#" class="ui-btn ui-btn-b ui-corner-all ui-shadow" id="btnCancel" data-rel="back">Cancelar</a>
-                </div>
-            </div>
-        </div>
-    </body>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<div data-role="page"  id="pageProfile" data-theme="a">
+			<script src="../scripts/profile.js" type="text/javascript"></script>
+			<link href="../styles/profile.css" rel="stylesheet"/>
+			<div data-role="header" class="ui-shadow" data-theme="a" data-position="fixed">
+				<a href="#" data-rel="back" class="ui-btn ui-mini ui-btn-icon-left ui-shadow ui-icon-back">Voltar</a>
+				<h1 id="titleWecolmeTo">WelcomeTo</h1>
+			</div>
+			<div role="main" class="ui-content" id="page-profile-content" style="margin-top: 2px;">
+				<div>
+					<div id="containerImage" class="imgLiquidFill imgLiquid ui-shadow photoInLandscape">
+						<a href="#loadPhoto" data-rel="popup" data-position-to="origin" data-transition="none" id="btnAlterImage">
+							<img class="imageProfile" />
+						</a>
+					</div>
+					<ul data-role="listview" class="ui-shadow fontOpenSans" id="listViewProfile">
+						<li>
+							<a href="#" data-rel="popup" data-position-to="window" data-transition="pop" >
+								<h3 class="displayName" style="text-transform: uppercase;"></h3>
+							</a>
+						</li>
+						<li>
+							<p class="ui-li-aside" data-translate="NASCEU_EM"></p>
+							<p class="profileItens" id="birthplace" style="text-indent: 20px;"></p>
+						</li>
+						<li>
+							<p class="ui-li-aside" data-translate="MORA_EM"></p>
+							<p class="profileItens" id="livesIn" style="text-indent: 20px;"></p>
+						</li>
+						<li>
+							<p class="ui-li-aside" data-translate="TRABALHA_EM"></p>
+							<p class="profileItens" id="work" style="text-indent: 20px;"></p>
+						</li>
+						<li>
+							<p class="ui-li-aside" data-translate="ESTUDA_EM" ></p>
+							<p class="profileItens" id="studiesIn" style="text-indent: 20px;"></p>
+						</li>
+						<li>
+							<p class="ui-li-aside" data-translate="IDIOMAS"></p>
+							<div class="profileItens" id="languages"></div>
+						</li>
+						<li>
+							<p class="ui-li-aside" data-translate="FORMADO_EM"></p>
+							<div class="profileItens" id="graduations"></div>
+						</li>
+						<li>
+							<p class="ui-li-aside" data-translate="VIAGENS" >Viajou para</p>
+							<div class="profileItens" id="traveling"></div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div data-role="popup" id="loadPhoto" data-overlay-theme="a" data-position="window" data-theme="a" data-dismissible="false" style="width:270px;">
+				<div role="main" class="ui-content">
+					<button id="btnTakePic">Camera</button>
+					<button id="btnChooseImage">Galeria</button>
+					<a href="#" class="ui-btn ui-btn-a ui-corner-all ui-shadow" id="btnCancel" data-rel="back">Cancelar</a>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

@@ -152,6 +152,9 @@
 			paper.set('image', parseFile);
 			paper.set('category', (newPaper.category === null ? '' : newPaper.category));
 			paper.set('score', 0);
+			paper.set('ratings', 0);
+			paper.set('commentsCount', 0);
+			paper.set('tipsCount', 0);
 		  
 			var point = new Parse.GeoPoint(
 				{
@@ -199,7 +202,6 @@
 			paper.save(null, 
 				{
 					success: function (_paper) {
-						
 						$('#popupSaving').popup('close');
 						
 						setTimeout(function() {
@@ -218,21 +220,18 @@
 					}
 				});
 		}, function (error) {
-			console.log("Error: " + error);
+			alert(error);
 		});
 	});
 
 	function gotPic(imagedata) {
 		//
-		$('#loadPhoto').popup('close');
-		
 		$('.imagePaper').attr('src', 'data:image/jpeg;base64,' + imagedata);
 		var img = $('.imagePaper')[0];
 		
 		$.mobile.loading('show');
 		
 		setTimeout(function() {
-			
 			var ratio = 0.75;
 				
 			var can = document.createElement('canvas');
@@ -252,6 +251,7 @@
 				});
 			
 			$.mobile.loading('hide');
+			$('#loadPhoto').popup('close');
 		}, 1000);
 	}
 
