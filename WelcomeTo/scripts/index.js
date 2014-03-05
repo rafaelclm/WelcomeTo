@@ -24,7 +24,7 @@
 		});
 		
 		var currentUser = Parse.User.current();
-		if (currentUser === null) {
+		if (currentUser !== null) {
 			$.mobile.changePage('views/userpage.html',
 				{
 					transition: 'flow'

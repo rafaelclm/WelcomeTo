@@ -10,10 +10,11 @@
 		/*-----------*/
 		var relation = currentUser.relation('profile');
 
-		relation.query().find({
-								  success: function (object) {
-									  loadProfile(object[0]);
-								  }
+		relation.query().find(
+			{
+				success: function (object) {
+					loadProfile(object[0]);
+				}
 			});
 	});
 
@@ -111,7 +112,7 @@
 		$('#traveling').html(traveling + '</ul>');
 
 		if (profile.get('photo') === undefined) {
-			$('.imageProfile').attr('src', 'images/user_128.png');
+			$('.imageProfile').attr('src', 'images/user.png');
 		}
 		else {
 			$('.imageProfile').attr('src', profile.get('photo').url() + '?' + new Date().getTime());

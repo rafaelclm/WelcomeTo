@@ -63,6 +63,7 @@
 			sessionStorage.setItem('paper', JSON.stringify(newPaper));
 			sessionStorage.removeItem('location');
 		}
+		
 	});
 
 	$("#btnTakePic").on("click", function (e) {

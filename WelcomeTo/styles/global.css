@@ -34,6 +34,7 @@ body
 	background-image: url(images/world-map.jpg) !important;
 	background-repeat: no-repeat;
 	background-size: 100% 100% !important;
+	color: GrayText !important;
 }
 
 .ui-page, .ui-header, .ui-footer, .ui-panel
@@ -44,6 +45,14 @@ body
 .ui-panel
 {
 	width: 100%;
+}
+
+.ui-no-button
+{
+	background: transparent !important; 
+	border: none !important; 
+	box-shadow: none !important; 
+	padding: 0px;
 }
 
 label
@@ -68,6 +77,11 @@ label
 input
 {
 	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+div, a, ul>li, input, textarea, span
+{
+	color: GrayText !important;
 }
 
 a
@@ -100,7 +114,8 @@ textarea
 	font-family: 'Allan', cursive;
 	font-size: 30px;
 	-webkit-text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-	padding: 4px;
+	padding: 0px;
+	color: GrayText;
 }
 
 .ui-dialog-contain

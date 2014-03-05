@@ -47,8 +47,6 @@
 		
 		$('#btnSaveTip').on('click', function() {
 		});
-		
-		
 	});
 
 	function loadSwipeEvent() {
@@ -107,12 +105,37 @@
 				for (var i = 0; i < papers.length; i++) {
 					var paper = papers[i];
 					var $item = $('<div></div>');
-					$item.attr('class', 'item ui-shadow ui-corner-all');
+					$item.attr('class', 'item ui-shadow');
 					$item.attr('id', paper.id);	
 					$item.attr('style', 'background: whitesmoke');
 					
+					var $user = $('<div></div>');
+					$user.attr('id', 'user' + paper.id);
+                    
+					var $wrapUser = $('<a href="#" class="ui-btn ui-btn-mini ui-corner-top"></a>');  
+					$wrapUser.attr('style', 'padding: 2px; text-align: left; margin: 0; border: none;');
+                    
+					var $divPhoto = $('<div style="width: 39px; height: 39px; float: left;"></div>');
+					$divPhoto.attr('class', 'imgLiquidFill imgLiquid imageUser ui-shadow');  
+					var $imageUser = $('<img/>');
+					$imageUser.attr('id', 'imageUser_' + paper.id);               
+					$divPhoto.append($imageUser);
+					$user.append($divPhoto);
+                    
+					var $divProfile = $('<div style="width: 225px; float: right;"></div>');
+					var $firstname = $('<div></div>');
+					$firstname.attr('id', 'userDisplayname_' + paper.id);                    
+					$divProfile.append($firstname);
+                    
+					var $livesIn = $('<div style="font-weight: normal"></div>');
+					$livesIn.attr('id', 'userLivesIn_' + paper.id);
+					$divProfile.append($livesIn);
+                    
+					$user.append($divProfile);  
+					$wrapUser.append($user); 
+					
 					var $body = $('<div></div>');
-					$body.attr('class', 'ui-body ui-body-a ui-corner-all');
+					$body.attr('class', 'ui-body ui-body-a ui-corner-all ui-shadow');
 					$body.attr('style', 'border: none');
                    
 					var $imageContainer = $('<div></div>');
@@ -158,68 +181,43 @@
 					var $content = $('<p></p>');
 					$content.text(paper.get('content'));
 					$body.append($content);
-                    
-					var $user = $('<div></div>');
-					$user.attr('id', 'user' + paper.id);
-                    
-					var $wrapUser = $('<a href="#" class="ui-btn ui-btn-mini"></a>');  
-					$wrapUser.attr('style', 'padding: 2px; text-align: left; margin: 0; border: none;');
-                    
-					var $divPhoto = $('<div style="width: 39px; height: 39px; float: left;"></div>');
-					$divPhoto.attr('class', 'imgLiquidFill imgLiquid imageUser ui-shadow');  
-					var $imageUser = $('<img/>');
-					$imageUser.attr('id', 'imageUser_' + paper.id);               
-					$divPhoto.append($imageUser);
-					$user.append($divPhoto);
-                    
-					var $divProfile = $('<div style="width: 225px; float: right;"></div>');
-					var $firstname = $('<div></div>');
-					$firstname.attr('id', 'userDisplayname_' + paper.id);                    
-					$divProfile.append($firstname);
-                    
-					var $livesIn = $('<div style="font-weight: normal"></div>');
-					$livesIn.attr('id', 'userLivesIn_' + paper.id);
-					$divProfile.append($livesIn);
-                    
-					$user.append($divProfile);  
-					$wrapUser.append($user); 
 			   
 					var relation = paper.relation('user');
 					relations.push(relation); 
 					 
 					var $buttons = $('<div class="ui-grid-b"></div>');
 					$buttons.attr('paper', paper.id);
-					var $comment = $('<a href="#popupComment">Comentar</a>');
+					var $comment = $('<a href="#popupComment"><span class="icon32-comments"></span></a>');
 					$comment.attr('name', 'paperOp');
 					$comment.attr('style', 'margin: 0; border: none;');
-					$comment.attr('class', 'ui-btn ui-btn-icon-left ui-icon-comment ui-mini');
+					$comment.attr('class', 'ui-btn ui-mini');
 					$comment.attr('data-position-to', 'window');
 					$comment.attr('data-rel', 'popup');
 					
 					var $wrapComment = $('<div class="ui-block-a"></div>');
 					$buttons.append($wrapComment.append($comment));
 					
-					var $tag = $('<a href="#popupTip">Dica</a>');
+					var $tag = $('<a href="#popupTip"><span class="icon32-info3"></span></a>');
 					$tag.attr('name', 'paperOp');
 					$tag.attr('style', 'margin: 0; border: none;');
-					$tag.attr('class', 'ui-btn ui-btn-icon-left ui-icon-info ui-mini');
+					$tag.attr('class', 'ui-btn ui-mini');
 					$tag.attr('data-position-to', 'window');
 					$tag.attr('data-rel', 'popup');
 					
 					var $wrapTag = $('<div class="ui-block-b"></div>');
 					$buttons.append($wrapTag.append($tag));
 					
-					var $raty = $('<a href="#popupRaty">Avaliar</a>');
+					var $raty = $('<a href="#popupRaty"><span class="icon32-star4"></span></a>');
 					$raty.attr('name', 'paperOp');
 					$raty.attr('style', 'margin: 0; border: none;');
-					$raty.attr('class', 'ui-btn ui-btn-icon-left ui-icon-star ui-mini');
+					$raty.attr('class', 'ui-btn ui-mini');
 					$raty.attr('data-rel', 'popup');
 					
 					var $wrapRaty = $('<div class="ui-block-c"></div>');
 					$buttons.append($wrapRaty.append($raty));
 					
-					$item.append($body); 
 					$item.append($wrapUser); 
+					$item.append($body); 
 					$item.append($buttons);                   
 					items.push($item[0]);
 				}

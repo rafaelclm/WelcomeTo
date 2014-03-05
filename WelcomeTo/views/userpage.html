@@ -17,9 +17,13 @@ and open the template in the editor.
 			<script src="../scripts/comment.js" type="text/javascript"></script>
 			<link href="../styles/pageUser.css" rel="stylesheet"/>
 			<div data-role="header" class="ui-shadow" data-theme="a" id="sticker" style="right: 0px; left: 0px; z-index: 10;">
-				<a href="#panelMenu" class="ui-btn ui-btn-icon-notext ui-icon-bars ui-shadow"></a>
+				<a href="#panelMenu" class="ui-no-button">
+					<span class="icon32-menu2"></span>
+				</a>
 				<h1 id="titleWecolmeTo">WelcomeTo</h1>
-				<a href="#panelUser" class="ui-btn ui-btn-icon-notext ui-icon-user ui-shadow"></a>
+				<a href="#panelUser" class="ui-no-button">
+					<span class="icon32-user6"></span>
+				</a>
 			</div>
 			<div role="main" class="ui-content">
 				<div id="container" style="height: auto;">
@@ -28,48 +32,72 @@ and open the template in the editor.
 			</div>
 			<div data-role="panel" id="panelMenu" data-display="overlay" data-position-fixed="true">
 				<div data-role="header" class="ui-shadow" data-theme="a" style=" position: absolute; top: 0px; right: 0px; left: 0px;">
-					<a href="#" data-rel="close" class="ui-btn ui-mini ui-btn-icon-left ui-shadow ui-icon-back">Voltar</a>
+					<a href="#" data-rel="close" class="ui-no-button">
+						<span class="icon32-arrow-left3"></span>
+					</a>
 					<h1 id="titleWecolmeTo">WelcomeTo</h1>
 				</div>
-				<ul data-role="listview" style="margin-top: 40px;" data-inset="true">
-					<li>
-						<a href="#">Hotéis</a>
-					</li>
-					<li>
-						<a href="#">Restaurantes</a>
-					</li>
-					<li>
-						<a href="#">Pousadas</a>
-					</li>
-					<li>
-						<a href="#">Lojas</a>
-					</li>
-					<li>
-						<a href="#">Lugares</a>
-					</li>
-					<li>
-						<a href="#">Amigos</a>
-					</li>
-				</ul>
+				<div style="margin-top: 40px;">
+					<ul data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Buscar Categoria">
+						<li data-icon="false">
+							<a href="#">
+								Hotéis <span class="icon32-bookmark2" style="float: right"></span>
+							</a>
+						</li>
+						<li data-icon="false">
+							<a href="#">
+								Restaurantes <span class="icon32-bookmark2" style="float: right"></span>
+							</a>
+						</li>
+						<li data-icon="false">
+							<a href="#">
+								Pousadas <span class="icon32-bookmark2" style="float: right"></span>
+							</a>
+						</li>
+						<li data-icon="false">
+							<a href="#">
+								Lojas <span class="icon32-bookmark2" style="float: right"></span>
+							</a>
+						</li>
+						<li data-icon="false">
+							<a href="#">
+								Lugares <span class="icon32-bookmark2" style="float: right"></span>
+							</a>
+						</li>
+						<li data-icon="false">
+							<a href="#">
+								Amigos <span class="icon32-bookmark2" style="float: right"></span>
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div><!-- /panel -->
 			<div data-role="panel" id="panelUser" data-position="right" data-display="overlay" data-position-fixed="true" data-animate="true">
 				<div data-role="header" class="ui-shadow" data-theme="a" style=" position: absolute; top: 0px; right: 0px; left: 0px;">
-					<a href="#" data-rel="close" class="ui-btn ui-mini ui-btn-icon-left ui-shadow ui-icon-back">Voltar</a>
+					<a href="#" data-rel="close" class="ui-no-button">
+						<span class="icon32-arrow-left3"></span>
+					</a>
 					<h1 id="titleWecolmeTo">WelcomeTo</h1>
 				</div>
 				<ul data-role="listview" data-inset="true" style="margin-top: 40px;">
-					<li>
-						<a href="profile.html" class="ui-icon-user" data-transition="flow">
+					<li data-icon="false">
+						<a href="profile.html" data-transition="flow">
 							<img class="imageProfile"/>
+							<span class="icon32-profile" style="float: right"></span>
 							<h2>Meu Perfil</h2>
 							<p class="displayName"></p>
-                        </a>
+						</a>
 					</li>
-					<li>
-						<a href="newPaper.html" data-transition="flow" class="ui-icon-plus">Novo Paper</a>
+					<li data-icon="false">
+						<a href="newPaper.html" data-transition="flow">
+							<span class="icon32-newspaper2" style="float: right"></span>
+							Novo Paper
+						</a>
 					</li>
-					<li>
-						<a href="#popupSearch" data-rel="popup" data-transition="none" class="ui-icon-search">Pesquisar</a>
+					<li data-icon="false">
+						<a href="#popupSearch" data-rel="popup" data-transition="none" class="ui-icon-search">
+							Pesquisar <span class="icon32-search3" style="float: right"></span>
+						</a>
 					</li>
 				</ul>
 			</div><!-- /panel -->
@@ -114,21 +142,24 @@ and open the template in the editor.
 				 data-overlay-theme="b" data-theme="a" data-dismissible="false" style="width:290px;">
 				<div data-role="header" data-theme="a">
 					<h1>Dica</h1>
-					<a href="#loadPhoto" data-rel="popup" data-transition="flow" class="ui-btn ui-btn-icon-notext ui-icon-camera">Imagem</a>
 				</div>
 				<div role="main" class="ui-content">
-					<div class="imgLiquidFill imgLiquid imageTip ui-shadow" style="width: 258px; height: 258px; margin: 0px auto;">
-						<img />
-					</div>
 					<textarea id="tip"></textarea>
 					<a href="#" class="ui-btn ui-shadow ui-btn-inline ui-btn-a ui-mini" data-rel="back">Cancelar</a>
 					<a href="#" id="btnSaveTip" class="ui-btn ui-shadow ui-btn-inline ui-btn-a ui-mini" data-rel="back">Salvar</a>
 				</div>
 			</div>
-
 			<div data-role="popup" id="commentOk" data-overlay-theme="a" data-theme="a" data-dismissible="false" class="ui-corner-all">
 				<div style="padding:10px 20px; text-align: center;">
 					<h3>Seu comentário foi adicionado com sucesso!</h3>
+				</div>
+			</div>
+			<div data-role="popup" id="loadPhoto" data-overlay-theme="a" data-position="window" data-theme="a" data-dismissible="false" style="width:270px;">
+				<div role="main" class="ui-content">
+					<a href="#" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-mini" id="btnTakePic">Camera</a>
+					<a href="#" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-mini" id="btnChooseImage">Galeria</a>
+					<a href="#" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-mini" id="btnCancel" data-rel="back">Cancelar</a>
+					<p style="text-align: center">Imagens no formato paisagem ficam melhor posicionadas no paper</p>
 				</div>
 			</div>
 		</div>

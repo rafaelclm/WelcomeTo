@@ -36,9 +36,9 @@ and open the template in the editor.
 						<a href="location.html" data-transition="flow" class="ui-btn ui-mini ui-shadow ui-btn-icon-left ui-icon-location">Local</a>
 					</div>
 				</div>
-				<select id="categoriesPaper" class="ui-mini">
-					<option value="none" selected>SELECIONE UMA CATEGORIA</option>
-					<option value="HOTEL" data-translate="HOTEL"></option>
+				<select id="categoriesPaper" class="ui-mini cd-select">
+					<option value="-1" selected>SELECIONE UMA CATEGORIA</option>
+					<option  value="HOTEL" data-translate="HOTEL"></option>
 					<option value="RESTAURANTE" >Restaurante</option>
 					<option value="POUSADA" >Pousada</option>
 					<option value="LOJA" >Loja</option>
@@ -61,8 +61,8 @@ and open the template in the editor.
 					<h3>Seu paper foi adicionado com sucesso!</h3>
 				</div>
 			</div>
-			<div data-role="popup" id="popupSaving" style="width: 50%; border: none; margin : 0px auto;" 
-				data-overlay-theme="a" data-theme="a" data-dismissible="false" class="ui-corner-all">
+			<div data-role="popup" id="popupSaving" style="width: 100px; border: none; margin : 0px auto;" 
+				 data-overlay-theme="a" data-theme="a" data-dismissible="false" class="ui-corner-all">
 				<div style="padding:10px 20px; text-align: center;">
 					<img style="width:100%" src="../images/loading.gif"/>
 				</div>
