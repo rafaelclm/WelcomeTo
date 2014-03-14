@@ -15,6 +15,7 @@ and open the template in the editor.
 			<script src="../scripts/pageUser.js" type="text/javascript"></script>
 			<script src="../scripts/score.js" type="text/javascript"></script>
 			<script src="../scripts/comment.js" type="text/javascript"></script>
+			<script src="../scripts/tip.js" type="text/javascript"></script>
 			<link href="../styles/pageUser.css" rel="stylesheet"/>
 			<div data-role="header" class="ui-shadow" data-theme="a" id="sticker" style="right: 0px; left: 0px; z-index: 10;">
 				<a href="#panelMenu" class="ui-no-button">
@@ -32,8 +33,9 @@ and open the template in the editor.
 			</div>
 			<div data-role="panel" id="panelMenu" data-display="overlay" data-position-fixed="true">
 				<div data-role="header" class="ui-shadow" data-theme="a" style=" position: absolute; top: 0px; right: 0px; left: 0px;">
+					<a class="ui-no-button"></a>
 					<a href="#" data-rel="close" class="ui-no-button">
-						<span class="icon32-arrow-left3"></span>
+						<span class="icon32-arrow-right3"></span>
 					</a>
 					<h1 id="titleWecolmeTo">WelcomeTo</h1>
 				</div>
@@ -101,6 +103,13 @@ and open the template in the editor.
 					</li>
 				</ul>
 			</div><!-- /panel -->
+			<div data-role="panel" id="viewPaper" data-animate="true" data-display="overlay" data-position-fixed="true">
+				<div style="position: absolute; right: 0; left: 0; top: 0; bottom: 0; overflow: scroll;">
+					<div class="ui-body ui-body-a" id="contentViewPaper" style="max-width: 450px; margin: 0px auto;">
+
+					</div>
+				</div>
+			</div>
 			<div data-role="popup" id="popupSearch" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="width:290px;">
 				<div role="main" class="ui-content">
 					<input data-theme="a" type="text" placeholder="País" class="ui-shadow"/>
@@ -138,28 +147,10 @@ and open the template in the editor.
 					<a href="#" id="btnSaveScore" class="ui-btn ui-shadow ui-btn-inline ui-btn-a ui-mini" data-rel="back">Salvar</a>
 				</div>
 			</div>
-			<div data-role="popup" id="popupTip"
-				 data-overlay-theme="b" data-theme="a" data-dismissible="false" style="width:290px;">
-				<div data-role="header" data-theme="a">
-					<h1>Dica</h1>
-				</div>
-				<div role="main" class="ui-content">
-					<textarea id="tip"></textarea>
-					<a href="#" class="ui-btn ui-shadow ui-btn-inline ui-btn-a ui-mini" data-rel="back">Cancelar</a>
-					<a href="#" id="btnSaveTip" class="ui-btn ui-shadow ui-btn-inline ui-btn-a ui-mini" data-rel="back">Salvar</a>
-				</div>
-			</div>
 			<div data-role="popup" id="commentOk" data-overlay-theme="a" data-theme="a" data-dismissible="false" class="ui-corner-all">
 				<div style="padding:10px 20px; text-align: center;">
+					<span class="icon32-notification" style="float: left"></span>
 					<h3>Seu comentário foi adicionado com sucesso!</h3>
-				</div>
-			</div>
-			<div data-role="popup" id="loadPhoto" data-overlay-theme="a" data-position="window" data-theme="a" data-dismissible="false" style="width:270px;">
-				<div role="main" class="ui-content">
-					<a href="#" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-mini" id="btnTakePic">Camera</a>
-					<a href="#" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-mini" id="btnChooseImage">Galeria</a>
-					<a href="#" class="ui-btn ui-btn-a ui-corner-all ui-shadow ui-mini" id="btnCancel" data-rel="back">Cancelar</a>
-					<p style="text-align: center">Imagens no formato paisagem ficam melhor posicionadas no paper</p>
 				</div>
 			</div>
 		</div>

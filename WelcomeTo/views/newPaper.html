@@ -18,7 +18,9 @@ and open the template in the editor.
 			<link href="../styles/newPaper.css" rel="stylesheet" />
 			<div data-role="header" data-theme="a">
 				<h1>Novo Paper</h1>
-				<a href="#loadPhoto" data-rel="popup" data-transition="flow" class="ui-btn ui-btn-icon-notext ui-icon-camera">Imagem</a>
+				<a href="#loadPhoto" data-rel="popup" class="ui-no-button">
+					<span class="icon32-camera4"></span>
+				</a>
 			</div>
 			<div class="imgLiquid imgLiquidFill" style="width: 100%; height: 250px;">
 				<img class="imagePaper"/>
@@ -29,11 +31,14 @@ and open the template in the editor.
 				<div class="ui-grid-a">
 					<div class="ui-block-a">
 						<label data-theme="a" class="ui-shadow">
-							<input type="checkbox" name="checkin" id="checkin" data-mini="true">Check in
+							<input type="checkbox" name="checkin" id="checkin">Check in
 						</label>
 					</div>
 					<div class="ui-block-b">
-						<a href="location.html" data-transition="flow" class="ui-btn ui-mini ui-shadow ui-btn-icon-left ui-icon-location">Local</a>
+						<a href="location.html" data-transition="flow" 
+						   class="ui-btn ui-shadow">
+							<span class="icon-location3" style="float: left"></span>Local
+						</a>
 					</div>
 				</div>
 				<select id="categoriesPaper" class="ui-mini cd-select">
@@ -46,7 +51,10 @@ and open the template in the editor.
 				</select>
 			</div>
 			<div data-role="footer" data-theme="a">
-				<a id="btnSavePaper" class="ui-btn ui-btn-icon-left ui-icon-arrow-u ui-shadow">Salvar</a>
+				<a id="btnSavePaper" class="ui-btn ui-shadow ui-mini">
+					<span class="icon-publish" style="float: left"></span>
+					<span style="float: right; margin-left: 5px;">Publicar</span>
+				</a>
 			</div>
 			<div data-role="popup" id="loadPhoto" data-overlay-theme="a" data-position="window" data-theme="a" data-dismissible="false" style="width:270px;">
 				<div role="main" class="ui-content">
@@ -58,6 +66,7 @@ and open the template in the editor.
 			</div>
 			<div data-role="popup" id="popupOk" data-overlay-theme="a" data-theme="a" data-dismissible="false" class="ui-corner-all">
 				<div style="padding:10px 20px; text-align: center;">
+					<span class="icon32-notification" style="float: left"></span>
 					<h3>Seu paper foi adicionado com sucesso!</h3>
 				</div>
 			</div>

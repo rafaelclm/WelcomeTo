@@ -18,6 +18,9 @@
 	text-transform: none;
 	line-height: 1;
 
+	color: Gray;
+	font-size: 20px;
+	
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

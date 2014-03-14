@@ -63,7 +63,6 @@
 			sessionStorage.setItem('paper', JSON.stringify(newPaper));
 			sessionStorage.removeItem('location');
 		}
-		
 	});
 
 	$("#btnTakePic").on("click", function (e) {
@@ -221,39 +220,22 @@
 					}
 				});
 		}, function (error) {
-			alert(error);
+			alert(error.description);
 		});
 	});
 
 	function gotPic(imagedata) {
 		//
 		$('.imagePaper').attr('src', 'data:image/jpeg;base64,' + imagedata);
-		var img = $('.imagePaper')[0];
+			
+		sessionStorage.setItem('imagedata', imagedata);
+		$(".imgLiquidFill").imgLiquid(
+			{
+				fill: true
+			});
+			
+		$('#loadPhoto').popup('close');
 		
-		$.mobile.loading('show');
-		
-		setTimeout(function() {
-			var ratio = 0.75;
-				
-			var can = document.createElement('canvas');
-			var ctx = can.getContext('2d');
-
-			can.width = img.width * ratio;
-			can.height = img.height * ratio;
-			ctx.scale(ratio, ratio); 
-			ctx.drawImage(img, 0, 0);
-			
-			img.src = can.toDataURL();
-			
-			sessionStorage.setItem('imagedata', can.toDataURL());
-			$(".imgLiquidFill").imgLiquid(
-				{
-					fill: true
-				});
-			
-			$.mobile.loading('hide');
-			$('#loadPhoto').popup('close');
-		}, 1000);
 	}
 
 	function failHandler(e) {

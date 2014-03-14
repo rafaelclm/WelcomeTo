@@ -57,6 +57,7 @@
 	});
     
 	function initialize(position) {
+		$.mobile.loading('show');
 		var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 		var options = {
 			zoom: 5,
@@ -90,6 +91,14 @@
 					}
 				}
 			});
+		});
+		
+		google.maps.event.addListenerOnce(map, 'idle', function() {
+			setTimeout(
+				function() {
+					$.mobile.loading('hide');	
+				}, 5000
+				)
 		});
 	}
     
